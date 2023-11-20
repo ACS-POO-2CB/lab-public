@@ -20,4 +20,9 @@ public class Student {
                 "name='" + name + '\'' +
                 '}';
     }
+    @Override
+    public boolean equals(Object object) {
+        if ( !(object instanceof Student) ) return false;
+        return this.name.equals( ((Student) object).name );
+    }
 }
