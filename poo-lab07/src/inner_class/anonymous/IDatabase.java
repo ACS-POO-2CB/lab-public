@@ -5,14 +5,14 @@ package inner_class.anonymous;
 
 import java.util.ArrayList;
 
-public interface IDatabase {
+public interface IDatabase<T> {
     void connect();
     void disconnect();
 
-    void insert(Object object);
-    void update(Object object, Object newObject);
-    void delete(Object object);
+    void insert(T object);
+    void update(T object, T newObject);
+    void delete(T object);
 
-    ArrayList<Object> getAll();
+    ArrayList<T> getAll();
 }
 
