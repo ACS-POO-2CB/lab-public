@@ -1,63 +1,38 @@
-/**
- * UPB, ACS, POO CB 2022-2023
- * @author Gabriel Gutu-Robu
- *
- * YOU MAY MODIFY THIS FILE TO RUN MORE TESTS
+/*
+ * You may modify this file to run more tests (runSomeTests)
  */
-package inner_class.anonymous;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class StudentManager {
 
     private IDatabase database;
-    private List<Student> students;
 
     public StudentManager(IDatabase database) {
-        this.students = new ArrayList<>();
         this.database = database;
     }
 
-    public boolean insertStudent(Student student) {
-        boolean result;
+    public void insertStudent(Student student) {
         this.database.connect();
         this.database.insert(student);
-        if (students.contains(student)) result = false;
-        else result = students.add(student);
         this.database.disconnect();
-        return result;
     }
 
-    public boolean updateStudent(Student student, Student newStudent) {
-        boolean result;
+    public void updateStudent(Student student, Student newStudent) {
         this.database.connect();
-        this.database.update(student);
-        if (!students.contains(student)) result = false;
-        else {
-            Student oldStudent = students.set(students.indexOf(student), newStudent);
-            result = oldStudent == student;
-        }
+        this.database.update(student, newStudent);
         this.database.disconnect();
-        return result;
     }
 
-    public boolean deleteStudent(Student student) {
-        boolean result;
+    public void deleteStudent(Student student) {
         this.database.connect();
         this.database.delete(student);
-        if (!students.contains(student)) result = false;
-        else result = students.remove(student);
         this.database.disconnect();
-        return result;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Student student : students)
+        for (Object student : database.getAll())
         {
-            sb.append(student + "\t");
+            sb.append((Student) student + "\t");
         }
         return "StudentManager contains " +
                 "students: " + sb.toString();
@@ -69,17 +44,17 @@ public class StudentManager {
         Student studentFlorina = new Student("Florina");
 
         this.insertStudent(studentVasile);
-        System.out.println(this);
+        System.out.println(this + "\n");
         this.deleteStudent(studentGigel);
-        System.out.println(this);
+        System.out.println(this + "\n");
         this.updateStudent(studentVasile, studentFlorina);
-        System.out.println(this);
+        System.out.println(this + "\n");
         this.insertStudent(studentVasile);
-        System.out.println(this);
+        System.out.println(this + "\n");
         this.deleteStudent(studentFlorina);
-        System.out.println(this);
+        System.out.println(this + "\n");
         this.insertStudent(studentGigel);
-        System.out.println(this);
+        System.out.println(this + "\n");
 
     }
 
