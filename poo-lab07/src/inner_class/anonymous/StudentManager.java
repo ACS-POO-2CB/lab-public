@@ -5,6 +5,7 @@
 package inner_class.anonymous;
 public class StudentManager {
 
+
     private IDatabase<Student> database;
 
     public StudentManager(IDatabase<Student> database) {
