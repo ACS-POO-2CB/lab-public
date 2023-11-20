@@ -15,7 +15,7 @@ public class StudentManager {
     private List<Student> students;
 
     public StudentManager(IDatabase database) {
-        this.students = new ArrayList();
+        this.students = new ArrayList<>();
         this.database = database;
     }
 
