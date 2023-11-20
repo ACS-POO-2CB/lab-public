@@ -1,6 +1,8 @@
 /*
  * You may modify this file to run more tests (runSomeTests)
  */
+
+package inner_class.anonymous;
 public class StudentManager {
 
     private IDatabase database;
