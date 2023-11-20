@@ -5,9 +5,10 @@
 package inner_class.anonymous;
 public class StudentManager {
 
-    private IDatabase database;
 
-    public StudentManager(IDatabase database) {
+    private IDatabase<Student> database;
+
+    public StudentManager(IDatabase<Student> database) {
         this.database = database;
     }
 
